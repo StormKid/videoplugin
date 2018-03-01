@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0094ff</color>
+    <color name="colorPrimaryDark">#0094ff</color>
+    <color name="colorAccent">#0094ff</color>
+
+    <color name="color_333">#333</color>
+    <color name="line_ccc">#ccc</color>
+
+
+
+    <color name="background_gray">#ffa5a5a5</color>
+    <color name="background_gray_light">#ffbababa</color>
+
+    <color name="recover_screen_text">#0094ff</color>
+</resources>

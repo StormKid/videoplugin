@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BaseLibrary</string>
+
+    <string name="error">错误</string>
+    <string name="something_wrong">发生了一些错误…</string>
+    <string name="unable_to_open_camera">无法打开相机，请检查后重试。</string>
+
+
+</resources>

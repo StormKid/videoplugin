@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:orientation="horizontal"
+                                     android:gravity="center_vertical"
+                                     android:id="@+id/item_contain"
+                                     android:paddingTop="@dimen/px_10"
+                                     android:paddingBottom="@dimen/px_10"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent">
+
+    <ImageView android:layout_width="@dimen/px_80" android:layout_height="@dimen/px_80"
+               android:id="@+id/item_iv" android:padding="@dimen/px_20"
+    />
+
+    <TextView android:layout_width="wrap_content"
+              android:textColor="@color/text_333"
+              android:id="@+id/item_title"
+              android:layout_height="wrap_content"/>
+
+    <TextView android:layout_width="0px"
+              android:layout_weight="1"
+              android:maxLines="1"
+              android:ellipsize="end"
+              android:textColor="@color/text_333"
+              android:layout_height="wrap_content"
+              android:id="@+id/item_tv"
+    />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:id="@+id/item_value"
+              android:textColor="@color/text_333"
+    />
+
+
+    <ImageView android:layout_width="@dimen/px_80" android:layout_height="@dimen/px_80"
+               android:id="@+id/item_to"
+               android:padding="@dimen/px_20"
+
+    />
+
+
+</com.zhy.autolayout.AutoLinearLayout>

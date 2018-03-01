@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:id="@+id/dialog_all"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_margin="@dimen/px_120"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/shape_twobutton_dialog"
+        android:weightSum="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.7"
+                android:padding="@dimen/px_20"
+                android:gravity="center"
+                android:textColor="@color/text_333"
+                android:textSize="@dimen/px_30"
+                android:id="@+id/dialog_title" />
+
+            <View style="@style/style_divide" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.3"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:id="@+id/dialog_yes"
+                    android:textSize="@dimen/px_24"
+                    android:textColor="@color/color_main"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_normal"
+                    android:layout_margin="@dimen/px_10"
+                    android:text="确定" />
+
+
+
+                <View
+                    android:layout_width="@dimen/px_1"
+                    android:layout_height="match_parent"
+                    android:background="@color/line_ccc" />
+
+                <Button
+                    android:layout_margin="@dimen/px_10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="取消"
+                    android:textColor="@color/text_333"
+                    android:textSize="@dimen/px_24"
+                    android:background="@drawable/selector_normal"
+                    android:id="@+id/dialog_no" />
+
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

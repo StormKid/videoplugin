@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="control_bar_height">46dp</dimen>
+    <dimen name="settings_btn_width">44dp</dimen>
+    <dimen name="aspect_btn_height">20dp</dimen>
+    <dimen name="aspect_btn_size">30dp</dimen>
+    <dimen name="title_text">14sp</dimen>s
+</resources>

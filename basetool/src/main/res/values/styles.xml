@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 弹窗显示的style -->
+    <style name="normalDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">false</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 半透明 -->
+        <item name="windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 模糊 -->
+    </style>
+    <!-- 透明背景的dialog -->
+    <style name="trans_dialog" parent="normalDialog">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <!--下划线-->
+    <style name="style_divide">
+        <item name="android:layout_height">@dimen/px_1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/line_ccc</item>
+    </style>
+
+    <declare-styleable name="ItemView">
+        <attr name="right_visible" format="boolean" />
+        <attr name="left_visible" format="boolean"/>
+        <attr name="left_gone" format="boolean"/>
+        <attr name="right_gone" format="boolean"/>
+        <attr name="bg_res" format="reference"/>
+        <attr name="title_size" format="integer"/>
+        <attr name="head_size" format="integer"/>
+        <attr name="right_tv_size" format="integer"/>
+        <attr name="left_img" format="reference" />
+        <attr name="right_img" format="reference"/>
+        <attr name="text_color" format="reference"/>
+        <attr name="title_color" format="reference"/>
+        <attr name="mid_title" format="string"/>
+        <attr name="left_head" format="string"/>
+        <attr name="right_value" format="string"/>
+        <attr name="is_banner" format="boolean"/>
+        <attr name="title_gravity" >
+            <enum name="CENTER" value="0"/>
+            <enum name="LEFT" value="1"/>
+            <enum name="RIGHT" value="2"/>
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="SimpleRatingBar">
+        <attr name="srb_borderColor" format="color" />
+        <attr name="srb_fillColor" format="color" />
+        <attr name="srb_backgroundColor" format="color" />
+        <attr name="srb_starBackgroundColor" format="color" />
+        <attr name="srb_pressedBorderColor" format="color" />
+        <attr name="srb_pressedFillColor" format="color" />
+        <attr name="srb_pressedBackgroundColor" format="color" />
+        <attr name="srb_pressedStarBackgroundColor" format="color" />
+        <attr name="srb_numberOfStars" format="integer" />
+        <attr name="srb_starSize" format="dimension" />
+        <attr name="srb_maxStarSize" format="dimension" />
+        <attr name="srb_starsSeparation" format="dimension" />
+        <attr name="srb_starBorderWidth" format="float" />
+        <attr name="srb_starCornerRadius" format="float" />
+        <attr name="srb_isIndicator" format="boolean" />
+        <attr name="srb_rating" format="float" />
+        <attr name="srb_stepSize" format="float" />
+        <attr name="srb_drawBorderEnabled" format="boolean" />
+        <attr name="srb_gravity" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>
