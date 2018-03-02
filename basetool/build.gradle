@@ -43,6 +43,7 @@ dependencies {
     api files('libs/umeng-common-1.4.1.jar')
     api "com.android.support:design:$v7_version"
     api 'org.simple:androideventbus:1.+'
+    api project(':FlycoTabLayout_Lib')
     //适配的tablayout
     implementation 'jp.wasabeef:glide-transformations:3.+'
     api "com.android.support:cardview-v7:$v7_version"

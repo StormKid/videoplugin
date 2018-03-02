@@ -30,7 +30,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':basetool')
-    implementation project(':FlycoTabLayout_Lib')
     implementation project(':ijkplayer')
     implementation project(':zxing')
 }
