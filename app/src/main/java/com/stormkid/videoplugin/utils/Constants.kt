@@ -28,4 +28,6 @@ object Constants {
      * 课程类型ID
      */
     const val courseType = "courseType"
+
+    const val footErr = "暂无更多加载"
 }

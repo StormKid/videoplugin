@@ -11,7 +11,7 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation
  * Created by ke_li on 2017/12/26.
  */
 class ImageUtil {
-    private var url: Any
+    private var url: Any?
 
     private var resId: Int
 
@@ -25,7 +25,7 @@ class ImageUtil {
 
     private var cornerType : RoundedCornersTransformation.CornerType
 
-    fun setUrl(url: Any): ImageUtil {
+    fun setUrl(url: Any?): ImageUtil {
         this.url = url
         return this
     }

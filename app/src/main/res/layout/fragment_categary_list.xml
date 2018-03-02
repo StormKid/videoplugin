@@ -3,6 +3,7 @@
               android:layout_width="match_parent"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
+              android:background="@color/f8"
               android:layout_height="match_parent">
     <com.flyco.tablayout.SegmentTabLayout android:layout_width="match_parent"
                                           android:id="@+id/choose_select"
@@ -19,4 +20,17 @@
                                           app:tl_indicator_corner_radius="0dp"
                                           android:layout_height="@dimen/px_60"
     />
+
+
+    <com.moudle.basetool.refresh.PullRefreshLayout android:layout_width="match_parent"
+                                                   android:layout_height="0px"
+                                                   android:layout_weight="1"
+                                                   android:id="@+id/refresh"
+    >
+        <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                                android:id="@+id/course_list"
+                                                android:layout_height="match_parent"/>
+
+    </com.moudle.basetool.refresh.PullRefreshLayout>
+
 </LinearLayout>

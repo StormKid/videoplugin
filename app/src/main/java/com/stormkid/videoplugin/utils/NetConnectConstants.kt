@@ -5,4 +5,6 @@ package com.stormkid.videoplugin.utils
  */
 object NetConnectConstants {
     const val category_type = "dict/list"
+
+    const val course_list = "course/list"
 }

@@ -20,5 +20,5 @@
         android:padding="10dp"
         android:text="@string/pull_up_load_label"
         android:textColor="@color/text_666"
-        android:textSize="@dimen/px_28" />
+        android:textSize="@dimen/px_24" />
 </LinearLayout>

@@ -11,7 +11,8 @@ import java.util.Date;
  */
 
 public class ThreadLocalDateUtil {
-    private static final String date_format = "yyyy-MM-dd  HH:mm";
+    public static final String date_format = "yyyy-MM-dd  HH:mm";
+    public static final String time_format = "HH:mm";
     private static ThreadLocal<DateFormat> threadLocal = new ThreadLocal<DateFormat>();
 
     public static DateFormat getDateFormat() {

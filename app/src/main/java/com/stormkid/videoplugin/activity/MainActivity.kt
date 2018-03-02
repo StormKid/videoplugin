@@ -35,7 +35,7 @@ class MainActivity : BaseActivity() {
             override fun success(any: String) {
                 val bean = JsonUtil.from(any,CateGroyEntity::class.java)
                 scroll_contain.adapter = adapter
-                fragments.add(CategaryListFragment.getInstance(bean))
+                fragments.add(CategaryListFragment.getInstance(bean,this@MainActivity))
                 adapter.notifyDataSetChanged()
             }
 
