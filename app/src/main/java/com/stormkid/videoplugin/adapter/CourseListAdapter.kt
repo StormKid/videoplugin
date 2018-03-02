@@ -2,13 +2,16 @@ package com.stormkid.videoplugin.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.moudle.basetool.utils.ImageUtil
+import com.moudle.basetool.utils.ManagerUtils
 import com.moudle.basetool.utils.ThreadLocalDateUtil
 import com.stormkid.videoplugin.R
 import com.stormkid.videoplugin.Record
+import com.stormkid.videoplugin.activity.VideoActivity
 import com.xiami.repairg.widget.AutoRecyclerAdapter
 
 /**
@@ -28,10 +31,10 @@ class CourseListAdapter(val context: Context, var mutableList: MutableList<Recor
         val imgUrl = record.imgUrl
         val endTime = record.endTime
         val startTime = record.startTime
-        hodler.comments.text = record.comments
+        hodler.comments.text = if (TextUtils.isEmpty( record.comments))"0" else record.comments
         hodler.courseName.text = record.gradeName + ":$courseName"
         hodler.courseType.text = record.subjectName
-        hodler.watchPeople.text = record.watchTimes
+        hodler.watchPeople.text = if (TextUtils.isEmpty( record.watchTimes))"0" else record.watchTimes
         ImageUtil(context).setUrl(imgUrl).withView(hodler.courseImg).setErr(R.mipmap.cl01).getNormalImage()
         val startReal = ThreadLocalDateUtil.longToString(startTime, ThreadLocalDateUtil.date_format)
         val endReal = ThreadLocalDateUtil.longToString(endTime, ThreadLocalDateUtil.time_format)
@@ -39,7 +42,9 @@ class CourseListAdapter(val context: Context, var mutableList: MutableList<Recor
         hodler.schoolName.text = record.schoolName
         if (record.isBoutique == "1") hodler.jingping.visibility = View.VISIBLE
         else hodler.jingping.visibility = View.GONE
-
+        hodler.itemView.setOnClickListener {
+                ManagerUtils.startActivity(context,VideoActivity::class.java)
+        }
 }
 
 fun loadMore(mutableList: MutableList<Record>, boolean: Boolean) {

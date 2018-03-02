@@ -28,11 +28,10 @@ class MyIntentCallback(val context: Context, private val tag: Any, private val c
         val token = TokenUtil.getToken(context)
         if (token.isEmpty()) return
         else request!!.headers(head, token)
-        if (refresh != null)
-            refresh.post {
-                if (!refresh.isRefreshing)
-                    refresh.isRefreshing = true
-            }
+        refresh?.post {
+            if (!refresh.isRefreshing)
+                refresh.isRefreshing = true
+        }
 
     }
 

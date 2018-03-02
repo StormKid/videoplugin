@@ -20,7 +20,7 @@
             android:padding="10dp"
             android:src="@mipmap/ic_return_back"/>
 
-        <org.plugins.videoplugin.ijklibrary.MarqueeTextView
+        <com.moudle.ijkplayer.MarqueeTextView
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             android:layout_height="25dp"
             android:background="@drawable/sel_item_background"
             android:src="@mipmap/white_back"/>
-        <org.plugins.videoplugin.ijklibrary.MarqueeTextView
+        <com.moudle.ijkplayer.MarqueeTextView
                 android:id="@+id/tv_title_vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

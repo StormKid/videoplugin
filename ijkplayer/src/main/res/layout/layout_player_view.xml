@@ -5,9 +5,10 @@
              android:layout_height="match_parent"
              android:focusable="true"
              android:focusableInTouchMode="true"
-             android:background="@android:color/black" xmlns:app="http://schemas.android.com/apk/res-auto">
+             android:background="@android:color/black"
+             >
 
-    <org.plugins.videoplugin.ijklibrary.IjkVideoView
+    <com.moudle.ijkplayer.IjkVideoView
         android:id="@+id/video_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

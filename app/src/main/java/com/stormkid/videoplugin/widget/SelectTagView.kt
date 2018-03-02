@@ -44,6 +44,12 @@ class SelectTagView : ViewGroup {
         textColor = attr.getResourceId(R.styleable.SelectTagView_tagTextColor, R.color.text_666)
         backGroundColor = attr.getResourceId(R.styleable.SelectTagView_tagBgColor, R.color.f8)
         backGroundResource = attr.getResourceId(R.styleable.SelectTagView_tagBgColor, 0)
+        val xmlType= attr.getInt(R.styleable.SelectTagView_tagSelectType, 0)
+        when (xmlType){
+            0-> type= NORMAL_CLOUD_TYPE
+            1-> type = SINGLE_SELECT_TYPE
+            2-> type = MORE_SELECT_TYPE
+        }
     }
 
     /**
@@ -182,7 +188,16 @@ class SelectTagView : ViewGroup {
                             it.tag = categoryBean
                             requestLayout()
                         }
-                        NORMAL_CLOUD_TYPE ->{}
+                        NORMAL_CLOUD_TYPE ->{
+                            categoryBean.isChoose = true
+                            list.forEachIndexed { index, categaryBean ->
+                                if (position!=index){
+                                    categaryBean.isChoose = false
+                                    getChildAt(index).tag = categaryBean
+                                }
+                            }
+                            requestFocus()
+                        }
 
                     }
 

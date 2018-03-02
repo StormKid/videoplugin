@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0094ff</color>
-    <color name="colorPrimaryDark">#0094ff</color>
-    <color name="colorAccent">#0094ff</color>
+    <color name="colorPrimary">#FF920B</color>
+    <color name="colorPrimaryDark">#FF920B</color>
+    <color name="colorAccent">#FF920B</color>
 
     <color name="color_333">#333</color>
     <color name="line_ccc">#ccc</color>
@@ -11,12 +11,12 @@
     <!--播放器-->
     <color name="bg_video_view">#80000000</color>
     <color name="seek_background">#809e9e9e</color>
-    <color name="seek_progress">#0094ff</color>
-    <color name="seek_secondary_progress">#880094ff</color>
+    <color name="seek_progress">#FF920B</color>
+    <color name="seek_secondary_progress">#88FF920B</color>
     <color name="seek_ball">#ffffffff</color>
 
-    <color name="media_quality_selected">#cc0094ff</color>
-    <color name="video_skip">#0094ff</color>
+    <color name="media_quality_selected">#ccFF920B</color>
+    <color name="video_skip">#FF920B</color>
 
     <color name="text_hint">#55ffffff</color>
     <color name="text_content">#ffffff</color>
@@ -24,5 +24,5 @@
     <color name="background_gray">#ffa5a5a5</color>
     <color name="background_gray_light">#ffbababa</color>
 
-    <color name="recover_screen_text">#0094ff</color>
+    <color name="recover_screen_text">#FF920B</color>
 </resources>

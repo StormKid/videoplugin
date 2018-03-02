@@ -23,7 +23,6 @@
 
         <CheckBox android:layout_width="@dimen/px_80"
                   android:id="@+id/check"
-                  android:checked="true"
                   android:layout_height="@dimen/px_80"/>
 
     </LinearLayout>

@@ -88,7 +88,7 @@ class CategaryListFragment : BaseFragment() {
 
 
     private val listSingle = arrayListOf(
-            CateGroyBean("time", "按时间排序", "sss",Constants.sortType, false),
+            CateGroyBean("time", "按时间排序", "sss",Constants.sortType, true),
             CateGroyBean("popularity", "按人气排序", "sss", Constants.sortType,false),
             CateGroyBean("hot", "按热度进行排序", "sss", Constants.sortType,false)
     )
@@ -98,7 +98,9 @@ class CategaryListFragment : BaseFragment() {
 
     private fun initSelect(position: Int) {
         showStyle()
-        val pop = CateGroyPop(activity!!, listSingle)
+        val pop = CateGroyPop(activity!!, listSingle).apply { this.setListener {
+            com.moudle.basetool.utils.LogUtil.d(it.toString())
+        } }
         val select = SelectorPop(activity!!,entity,changeMap).apply {
             this.getOk { readMap, selectedMap -> changeMap = readMap
 

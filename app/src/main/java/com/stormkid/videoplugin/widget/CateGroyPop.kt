@@ -18,6 +18,8 @@ class CateGroyPop( var myContext:Context , val list: MutableList<CateGroyBean>) 
 
     private var selecPosition = 0
 
+    private lateinit var listener:(CateGroyBean)->Unit
+
     override fun initLayout(): Int = R.layout.pop_single
 
     override fun initPop() {
@@ -47,6 +49,7 @@ class CateGroyPop( var myContext:Context , val list: MutableList<CateGroyBean>) 
                 selecPosition = position
                 list[selecPosition].isChoose = true
                 it.notifyItemChanged(selecPosition)
+                listener.invoke(list[selecPosition])
                 dismiss()
             }
             it
@@ -83,6 +86,10 @@ class CateGroyPop( var myContext:Context , val list: MutableList<CateGroyBean>) 
 
     class SingleHolder(view: View) : AutoRecyclerAdapter.AutoViewHolder(view){
          val single_text = view.findViewById<TextView>(R.id.single_text)
+    }
+
+    fun setListener(listener: (CateGroyBean) -> Unit){
+        this.listener = listener
     }
 
 }
