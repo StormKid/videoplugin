@@ -46,7 +46,7 @@ import static com.moudle.ijkplayer.StringUtils.generateTime;
 public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
 
     // 进度条最大值
-    private static final int MAX_VIDEO_SEEK = Integer.MAX_VALUE;
+    private static final int MAX_VIDEO_SEEK = 1000;
     // 默认隐藏控制栏时间
     private static final int DEFAULT_HIDE_TIMEOUT = 5000;
     // 更新进度消息
@@ -917,7 +917,6 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         if (isFullscreen) {
             // 高度扩展为横向全屏
             layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
         } else {
             // 还原高度
             layoutParams.height = mInitHeight;
