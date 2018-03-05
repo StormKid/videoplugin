@@ -99,11 +99,21 @@ class CategaryListFragment : BaseFragment() {
     private fun initSelect(position: Int) {
         showStyle()
         val pop = CateGroyPop(activity!!, listSingle).apply { this.setListener {
-            com.moudle.basetool.utils.LogUtil.d(it.toString())
+            params[it.flag] = it.id
+            index = 1
+            isLoading = false
+            initData()
         } }
         val select = SelectorPop(activity!!,entity,changeMap).apply {
             this.getOk { readMap, selectedMap -> changeMap = readMap
-
+                params.clear()
+                selectedMap.keys.forEach {
+                    val cateGroyBean = selectedMap[it]
+                    params[cateGroyBean!!.flag] = cateGroyBean.id
+                    index = 1
+                    isLoading = false
+                    initData()
+                }
             }
             this.setOnDismissListener { cleanStyle() }
         }

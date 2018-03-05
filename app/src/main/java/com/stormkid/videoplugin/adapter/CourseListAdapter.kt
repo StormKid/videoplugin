@@ -38,12 +38,12 @@ class CourseListAdapter(val context: Context, var mutableList: MutableList<Recor
         ImageUtil(context).setUrl(imgUrl).withView(hodler.courseImg).setErr(R.mipmap.cl01).getNormalImage()
         val startReal = ThreadLocalDateUtil.longToString(startTime, ThreadLocalDateUtil.date_format)
         val endReal = ThreadLocalDateUtil.longToString(endTime, ThreadLocalDateUtil.time_format)
-        hodler.courseTime.text = startReal + "- $endReal"
+        hodler.courseTime.text = "$startReal- $endReal"
         hodler.schoolName.text = record.schoolName
         if (record.isBoutique == "1") hodler.jingping.visibility = View.VISIBLE
         else hodler.jingping.visibility = View.GONE
         hodler.itemView.setOnClickListener {
-                ManagerUtils.startActivity(context,VideoActivity::class.java)
+                ManagerUtils.startActivity(context,VideoActivity::class.java,record.infoId)
         }
 }
 

@@ -1,31 +1,70 @@
 package com.stormkid.videoplugin.activity
 
 import android.content.res.Configuration
+import android.text.TextUtils
 import android.view.KeyEvent
 import android.widget.ImageView
 import com.moudle.basetool.BaseActivity
+import com.moudle.basetool.net.MyNormalNetCallback
+import com.moudle.basetool.net.OkTools
+import com.moudle.basetool.utils.JsonUtil
 import com.moudle.ijkplayer.IjkPlayerView
 import com.stormkid.videoplugin.CateGroyBean
 import com.stormkid.videoplugin.R
+import com.stormkid.videoplugin.Video
+import com.stormkid.videoplugin.VideoEntity
+import com.stormkid.videoplugin.utils.NetConnectConstants
 import kotlinx.android.synthetic.main.activity_video.*
 
 /**
  * Created by ke_li on 2018/3/2.
  */
 class VideoActivity:BaseActivity() {
+    val myVideoUrls = arrayListOf<Video>()
     override fun getLayout(): Int  = R.layout.activity_video
 
     override fun initView() {
-        tag_P.initChild(arrayListOf(CateGroyBean("0","1p","","",true),
+        tag_P.initChild(arrayListOf(CateGroyBean("0","1p","","",false),
                 CateGroyBean("1","2p","","",false),
                 CateGroyBean("2","3p","","",false)
                 ),{
 
         })
-        play_view.init(this).enableOrientation()
-                .setVideoSource(null, "", null, null, null)
+
+        val id = intent.getStringExtra(this.javaClass.name)
+
+        //通过ID网络请求
+        initNet(id)
+
+
+    }
+
+    private fun initVideo(){
+        play_view.init(this)
+                .setTitle("P1")
+                .enableOrientation()
+                .setVideoSource(null, myVideoUrls[0].httpUrl, null, null, null)
                 .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
         play_view.mPlayerThumb.scaleType = ImageView.ScaleType.CENTER_CROP
+    }
+
+
+    private fun initNet(id: String?) {
+        if (TextUtils.isEmpty(id))return
+        myVideoUrls.clear()
+        OkTools.builder().setUrl(NetConnectConstants.video_list)
+                .setTag(this).setParams(hashMapOf(Pair("courseId",id!!))).build(this).get(object : MyNormalNetCallback{
+                    override fun success(any: String) {
+                        val entity = JsonUtil.from(any,VideoEntity::class.java)
+                        myVideoUrls.addAll(entity.videos)
+                        initVideo()
+                    }
+
+                    override fun err(msg: String) {
+                    }
+
+                })
+
     }
 
     override fun initEvent() {

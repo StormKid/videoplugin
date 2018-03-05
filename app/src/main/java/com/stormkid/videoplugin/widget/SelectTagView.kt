@@ -190,6 +190,7 @@ class SelectTagView : ViewGroup {
                         }
                         NORMAL_CLOUD_TYPE ->{
                             categoryBean.isChoose = true
+                            it.tag = categoryBean
                             list.forEachIndexed { index, categaryBean ->
                                 if (position!=index){
                                     categaryBean.isChoose = false

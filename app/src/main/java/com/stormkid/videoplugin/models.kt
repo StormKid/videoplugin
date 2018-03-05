@@ -62,6 +62,15 @@ data class Record(
 ):Serializable
 
 
+data class VideoEntity(
+		val videos: MutableList<Video>,
+		val type: String
+)
+
+data class Video(
+		val httpUrl: String
+)
+
 object ModelUtil{
     fun getCateGroyBeanList(map: MutableMap<String,String>,tag:String,flag: String)= arrayListOf<CateGroyBean>().apply {
         map.forEach {

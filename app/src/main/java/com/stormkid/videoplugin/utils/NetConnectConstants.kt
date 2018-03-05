@@ -7,4 +7,6 @@ object NetConnectConstants {
     const val category_type = "dict/list"
 
     const val course_list = "course/list"
+
+    const val video_list = "video/list"
 }

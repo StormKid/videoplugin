@@ -23,7 +23,9 @@ class SelectorPop(val context: Context, val entity: CateGroyEntity, mapParams: M
     override fun initLayout(): Int = R.layout.select_pop
     private val selectedMap = mutableMapOf<String, CateGroyBean>()
     private var readMap = if (mapParams == null || mapParams.isEmpty()) initCateGroyType() else mapParams
-    private lateinit var listener: (MutableMap<String, MutableList<CateGroyBean>>,MutableMap<String,CateGroyBean>) -> Unit
+    private lateinit var listener: (MutableMap<String, MutableList<CateGroyBean>>, MutableMap<String, CateGroyBean>) -> Unit
+    private val checkTag = "check"
+
 
     override fun initPop() {
         val my_cate_groy = contentView.findViewById<ExpandableListView>(R.id.my_cate_groy)
@@ -34,22 +36,29 @@ class SelectorPop(val context: Context, val entity: CateGroyEntity, mapParams: M
         my_cate_groy.setAdapter(adaper)
         my_cate_groy.setGroupIndicator(null)
 
+        if (readMap[checkTag] != null) check.isChecked = readMap[checkTag]!![0].isChoose
+        else check.isChecked = false
+
         re_set.setOnClickListener {
             readMap = initCateGroyType()
+            check.isChecked = false
             adaper.update(readMap)
         }
         do_now.setOnClickListener {
-            val myCheckResult = if (check.isChecked) 1 else 0
-            selectedMap["check"] = CateGroyBean("$myCheckResult","","",Constants.type,check.isChecked)
-            listener.invoke(readMap,selectedMap)
+            if (check.isChecked)
+                selectedMap[checkTag] = CateGroyBean("1", "", "", Constants.type, check.isChecked)
+            else
+                selectedMap[checkTag] = CateGroyBean("1", "", "", "noType", check.isChecked)
+            readMap[checkTag] = arrayListOf(CateGroyBean("1", "", "", Constants.type, check.isChecked))
+            listener.invoke(readMap, selectedMap)
             dismiss()
         }
     }
 
     private fun initCateGroyType() = mutableMapOf<String, MutableList<CateGroyBean>>().let {
-        val sys_course_type = ModelUtil.getCateGroyBeanList(entity.sys_course_type, Constants.sys_course_type,Constants.courseType)
-        val sys_grade = ModelUtil.getCateGroyBeanList(entity.sys_grade, Constants.sys_grade,Constants.gradeId)
-        val sys_subject = ModelUtil.getCateGroyBeanList(entity.sys_subject, Constants.sys_subject,Constants.subjectId)
+        val sys_course_type = ModelUtil.getCateGroyBeanList(entity.sys_course_type, Constants.sys_course_type, Constants.courseType)
+        val sys_grade = ModelUtil.getCateGroyBeanList(entity.sys_grade, Constants.sys_grade, Constants.gradeId)
+        val sys_subject = ModelUtil.getCateGroyBeanList(entity.sys_subject, Constants.sys_subject, Constants.subjectId)
         it[Constants.sys_grade] = sys_grade
         it[Constants.sys_course_type] = sys_course_type
         it[Constants.sys_subject] = sys_subject
@@ -61,7 +70,7 @@ class SelectorPop(val context: Context, val entity: CateGroyEntity, mapParams: M
 
         private val keys = arrayListOf(Constants.sys_subject, Constants.sys_grade, Constants.sys_course_type)
 
-        fun update(map: MutableMap<String, MutableList<CateGroyBean>>){
+        fun update(map: MutableMap<String, MutableList<CateGroyBean>>) {
             this.map = map
             notifyDataSetChanged()
         }
@@ -104,7 +113,7 @@ class SelectorPop(val context: Context, val entity: CateGroyEntity, mapParams: M
 
     }
 
-    fun getOk(listener: (MutableMap<String, MutableList<CateGroyBean>>,MutableMap<String,CateGroyBean>) -> Unit) {
+    fun getOk(listener: (MutableMap<String, MutableList<CateGroyBean>>, MutableMap<String, CateGroyBean>) -> Unit) {
         this.listener = listener
     }
 
