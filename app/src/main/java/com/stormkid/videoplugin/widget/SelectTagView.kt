@@ -59,6 +59,7 @@ class SelectTagView : ViewGroup {
         return MarginLayoutParams(context, attrs)
     }
 
+
     /**
      * 更新type是否为多选或单选或者只点击
      */
@@ -115,6 +116,7 @@ class SelectTagView : ViewGroup {
         //初始化父控件大小
         var resultWidth = 0
         var resultHeight = 0
+
 
         // 初始化行控件大小
         var itemWidth = 0

@@ -34,7 +34,7 @@ class CategaryListFragment : BaseFragment() {
 
     override fun initData() {
         val map = mutableMapOf(Pair("pageSize","10")
-            , Pair("index","$index")
+            , Pair("index","$index"),Pair(Constants.sortType,"time")
         )
         map.putAll(params)
 

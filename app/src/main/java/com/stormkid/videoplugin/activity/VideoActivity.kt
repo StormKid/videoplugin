@@ -1,12 +1,15 @@
 package com.stormkid.videoplugin.activity
 
 import android.content.res.Configuration
+import android.os.Handler
 import android.text.TextUtils
 import android.view.KeyEvent
 import android.widget.ImageView
 import com.moudle.basetool.BaseActivity
 import com.moudle.basetool.net.MyNormalNetCallback
 import com.moudle.basetool.net.OkTools
+import com.moudle.basetool.refresh.OnRefreshListener
+import com.moudle.basetool.refresh.PullRefreshLayout
 import com.moudle.basetool.utils.JsonUtil
 import com.moudle.ijkplayer.IjkPlayerView
 import com.stormkid.videoplugin.CateGroyBean
@@ -71,6 +74,8 @@ class VideoActivity:BaseActivity() {
                     }
 
                     override fun err(msg: String) {
+                       play_view.init(this@VideoActivity).stop()
+                        finish()
                     }
 
                 })
@@ -78,6 +83,17 @@ class VideoActivity:BaseActivity() {
     }
 
     override fun initEvent() {
+        refreshLayout.setMode(PullRefreshLayout.BOTH)
+        refreshLayout.setOnRefreshListener(object : OnRefreshListener{
+            override fun onPullDownRefresh() {
+                Handler().post { refreshLayout.onRefreshComplete() }
+            }
+
+            override fun onPullUpRefresh() {
+                Handler().post { refreshLayout.onRefreshComplete() }
+            }
+
+        })
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
