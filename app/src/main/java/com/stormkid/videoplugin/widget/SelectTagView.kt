@@ -197,7 +197,7 @@ class SelectTagView : ViewGroup {
                                     getChildAt(index).tag = categaryBean
                                 }
                             }
-                            requestFocus()
+                            requestLayout()
                         }
 
                     }

@@ -24,15 +24,8 @@ class VideoActivity:BaseActivity() {
     override fun getLayout(): Int  = R.layout.activity_video
 
     override fun initView() {
-        tag_P.initChild(arrayListOf(CateGroyBean("0","1p","","",false),
-                CateGroyBean("1","2p","","",false),
-                CateGroyBean("2","3p","","",false)
-                ),{
-
-        })
 
         val id = intent.getStringExtra(this.javaClass.name)
-
         //通过ID网络请求
         initNet(id)
 
@@ -46,6 +39,23 @@ class VideoActivity:BaseActivity() {
                 .setVideoSource(null, myVideoUrls[0].httpUrl, null, null, null)
                 .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
         play_view.mPlayerThumb.scaleType = ImageView.ScaleType.CENTER_CROP
+
+        val list = arrayListOf<CateGroyBean>()
+        myVideoUrls.forEachIndexed { index: Int, video: Video ->
+            val getP = index+1
+            CateGroyBean("$index","$getP"+"p",video.httpUrl,"", index==0).apply {
+                list.add(this)
+            }
+
+        }
+        tag_P.initChild(list,{
+            play_view.init(this)
+                    .setTitle(it.name)
+                    .enableOrientation()
+                    .setVideoSource(null, myVideoUrls[0].httpUrl, null, null, null)
+                    .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
+            play_view.start()
+        })
     }
 
 
