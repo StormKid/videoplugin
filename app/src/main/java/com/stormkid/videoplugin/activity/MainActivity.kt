@@ -67,8 +67,7 @@ class MainActivity : BaseActivity() {
                         val bean  =   Gson().fromJson(result, RebackData::class.java)
                         val url  = "http://"+bean.hls.host+"/"+bean.hls.app+"/"+bean.hls.path+".m3u8"
                         if (url.isEmpty()) return
-//          TODO 书写跳转视频页面
-//          val intent : Intent = Intent(this,VideoAcitvity::class.java)
+                         val intent : Intent = Intent(this,VideoActivity::class.java)
                         intent.putExtra("url",url)
                         startActivity(intent)
                     }catch (e : Exception){

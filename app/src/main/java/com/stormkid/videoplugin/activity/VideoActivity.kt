@@ -27,11 +27,19 @@ class VideoActivity:BaseActivity() {
     override fun getLayout(): Int  = R.layout.activity_video
 
     override fun initView() {
-
-        val id = intent.getStringExtra(this.javaClass.name)
-        //通过ID网络请求
-        initNet(id)
-
+        val url = intent.getStringExtra("url")
+        if (TextUtils.isEmpty(url)) {
+            val id = intent.getStringExtra(this.javaClass.name)
+            //通过ID网络请求
+            initNet(id)
+        }else{
+            play_view.init(this)
+                    .setTitle("P1")
+                    .enableOrientation()
+                    .setVideoSource(null, url, null, null, null)
+                    .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
+            play_view.mPlayerThumb.scaleType = ImageView.ScaleType.CENTER_CROP
+        }
 
     }
 
