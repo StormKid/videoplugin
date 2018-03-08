@@ -33,10 +33,14 @@
                                    android:padding="@dimen/px_5"
                                    android:layout_marginRight="@dimen/px_8"
                                    android:layout_height="@dimen/px_40"/>
-                        <TextView android:layout_width="match_parent"
+                        <EditText android:layout_width="match_parent"
                                   android:textColor="@color/text_666"
                                   android:textSize="@dimen/px_28"
-                                  android:text="点击搜索"
+                                  android:id="@+id/search_bar"
+                                  android:background="@android:color/transparent"
+                                  android:maxLength="20"
+                                  android:hint="请输入您要搜索的课程"
+                                  android:textColorHint="@color/text_999"
                                   android:layout_height="wrap_content"/>
         </LinearLayout>
     </RelativeLayout>

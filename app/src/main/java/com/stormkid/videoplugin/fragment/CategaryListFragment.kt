@@ -18,6 +18,7 @@ import com.stormkid.videoplugin.utils.NetConnectConstants
 import com.stormkid.videoplugin.widget.CateGroyPop
 import com.stormkid.videoplugin.widget.SelectorPop
 import kotlinx.android.synthetic.main.fragment_categary_list.*
+import org.simple.eventbus.Subscriber
 
 /**
  * Created by ke_li on 2018/2/27.
@@ -169,5 +170,14 @@ class CategaryListFragment : BaseFragment() {
             }
 
         })
+    }
+
+
+    @Subscriber( tag = "search")
+    fun getSearch(value:String){
+        params["courseName"] = value
+        index = 1
+        isLoading = false
+        initData()
     }
 }

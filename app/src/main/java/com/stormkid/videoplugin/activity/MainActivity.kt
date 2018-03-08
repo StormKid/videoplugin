@@ -3,7 +3,9 @@ package com.stormkid.videoplugin.activity
 import android.app.Activity
 import android.content.Intent
 import android.support.v4.app.Fragment
+import android.text.Editable
 import android.text.TextUtils
+import android.text.TextWatcher
 import com.google.gson.Gson
 import com.moudle.basetool.BaseActivity
 import com.moudle.basetool.net.MyNormalNetCallback
@@ -20,6 +22,7 @@ import com.stormkid.videoplugin.fragment.CategaryListFragment
 import com.stormkid.videoplugin.utils.NetConnectConstants
 import com.yanzhenjie.permission.Permission
 import kotlinx.android.synthetic.main.activity_main.*
+import org.simple.eventbus.EventBus
 
 class MainActivity : BaseActivity() {
     private val requestCode = 100
@@ -52,6 +55,18 @@ class MainActivity : BaseActivity() {
             PermissionUtil(this).excuteSelfPermission({ startActivityForResult(Intent(this, CaptureActivity::class.java)
                     , requestCode) }, Permission.CAMERA)
         }
+        search_bar.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val value = s?.toString()
+                EventBus.getDefault().post(value,"search")
+            }
+        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
