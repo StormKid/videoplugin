@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.moudle.basetool.ui.AutoCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                     xmlns:app="http://schemas.android.com/apk/res-auto"
+                                     android:layout_width="match_parent"
+                                     android:layout_margin="@dimen/px_10"
+                                     app:cardElevation="@dimen/px_10"
+                                     app:cardBackgroundColor="@android:color/white"
+                                     android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:padding="@dimen/px_20"
+    >
+    <ImageView android:layout_width="@dimen/px_100"
+               android:src="@color/color_main"
+               android:id="@+id/comment_photoW"
+               android:layout_height="@dimen/px_100"/>
+
+    </LinearLayout>
+
+</com.moudle.basetool.ui.AutoCardView>

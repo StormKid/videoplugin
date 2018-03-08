@@ -86,4 +86,12 @@
             <flag name="both" value="0x3" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="ExpandableTextView">
+        <attr name="foldText" format="string"/>
+        <attr name="unFoldText" format="string"/>
+        <attr name="foldLine" format="integer"/>
+        <attr name="tailTextColor" format="color"/>
+        <attr name="canFoldAgain" format="boolean"/>
+    </declare-styleable>
 </resources>

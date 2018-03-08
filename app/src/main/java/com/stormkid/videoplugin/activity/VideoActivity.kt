@@ -23,13 +23,16 @@ import kotlinx.android.synthetic.main.activity_video.*
  * Created by ke_li on 2018/3/2.
  */
 class VideoActivity:BaseActivity() {
-    val myVideoUrls = arrayListOf<Video>()
+   private val myVideoUrls = arrayListOf<Video>()
+    private var index = 1
+    private var isLoading  = false
+    private var id = ""
     override fun getLayout(): Int  = R.layout.activity_video
 
     override fun initView() {
         val url = intent.getStringExtra("url")
         if (TextUtils.isEmpty(url)) {
-            val id = intent.getStringExtra(this.javaClass.name)
+            id = intent.getStringExtra(this.javaClass.name)
             //通过ID网络请求
             initNet(id)
         }else{
@@ -67,6 +70,22 @@ class VideoActivity:BaseActivity() {
             initPlayView(it.subject,it.name)
             play_view.start()
         })
+        initComment()
+
+    }
+
+
+    private fun initComment(){
+        val params = hashMapOf(Pair("courseId",id), Pair("index","$index"), Pair("pageSize","5"))
+        OkTools.builder().setUrl(NetConnectConstants.comment_list).setTag(this).setParams(params).build(this).get(object : MyNormalNetCallback{
+            override fun success(any: String) {
+
+            }
+
+            override fun err(msg: String) {
+            }
+
+        })
     }
 
 
@@ -94,7 +113,9 @@ class VideoActivity:BaseActivity() {
         refreshLayout.setMode(PullRefreshLayout.BOTH)
         refreshLayout.setOnRefreshListener(object : OnRefreshListener{
             override fun onPullDownRefresh() {
-                Handler().post { refreshLayout.onRefreshComplete() }
+                isLoading = false
+                index = 1
+
             }
 
             override fun onPullUpRefresh() {
