@@ -20,7 +20,9 @@
         <meta-data
                 android:name="design_height"
                 android:value="1136"/>
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+                  android:windowSoftInputMode="stateHidden|adjustPan"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

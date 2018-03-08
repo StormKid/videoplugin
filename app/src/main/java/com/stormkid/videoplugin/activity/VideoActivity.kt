@@ -33,24 +33,28 @@ class VideoActivity:BaseActivity() {
             //通过ID网络请求
             initNet(id)
         }else{
-            play_view.init(this)
-                    .setTitle("P1")
-                    .enableOrientation()
-                    .setVideoSource(null, url, null, null, null)
-                    .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
-            play_view.mPlayerThumb.scaleType = ImageView.ScaleType.CENTER_CROP
+           initPlayView(url,"P1")
         }
 
     }
 
-    private fun initVideo(){
+    private fun initPlayView(url:String,title:String){
         play_view.init(this)
-                .setTitle("P1")
+                .setTitle(title)
                 .enableOrientation()
-                .setVideoSource(null, myVideoUrls[0].httpUrl, null, null, null)
+                .setVideoSource(null, url, null, null, null)
                 .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
         play_view.mPlayerThumb.scaleType = ImageView.ScaleType.CENTER_CROP
+    }
 
+
+    private fun initVideo(){
+        if (myVideoUrls.isEmpty()) {
+            play_view.init(this@VideoActivity).stop()
+            finish()
+            return
+        }
+        initPlayView(myVideoUrls[0].httpUrl,"P1")
         val list = arrayListOf<CateGroyBean>()
         myVideoUrls.forEachIndexed { index: Int, video: Video ->
             val getP = index+1
@@ -60,11 +64,7 @@ class VideoActivity:BaseActivity() {
 
         }
         tag_P.initChild(list,{
-            play_view.init(this)
-                    .setTitle(it.name)
-                    .enableOrientation()
-                    .setVideoSource(null, myVideoUrls[0].httpUrl, null, null, null)
-                    .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
+            initPlayView(it.subject,it.name)
             play_view.start()
         })
     }
