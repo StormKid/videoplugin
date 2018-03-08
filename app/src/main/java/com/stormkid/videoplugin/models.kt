@@ -79,3 +79,35 @@ object ModelUtil{
         }
     }
 }
+
+
+data class CommentsEntity(
+		val offset: Int,
+		val limit: Int,
+		val total: Int,
+		val size: Int,
+		val pages: Int,
+		val current: Int,
+		val searchCount: Boolean,
+		val openSort: Boolean,
+		val orderByField: Any,
+		val records: MutableList<RecordComment>,
+		val condition: Any,
+		val asc: Boolean,
+		val offsetCurrent: Int
+)
+
+data class RecordComment(
+		val id: String,
+		val parentId: String,
+		val userId: String,
+		val userName: String,
+		val busiId: String,
+		val content: String,
+		val likes: String,
+		val createTime: Long,
+		val replyUserId: String,
+		val replyUserName: String,
+		val timeStr: String,
+		val userImg: String
+)

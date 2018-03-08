@@ -3,18 +3,54 @@
                                      xmlns:app="http://schemas.android.com/apk/res-auto"
                                      android:layout_width="match_parent"
                                      android:layout_margin="@dimen/px_10"
-                                     app:cardElevation="@dimen/px_10"
+                                     app:cardElevation="@dimen/px_5"
+                                     app:cardCornerRadius="@dimen/px_10"
                                      app:cardBackgroundColor="@android:color/white"
                                      android:layout_height="wrap_content">
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:padding="@dimen/px_20"
     >
-    <ImageView android:layout_width="@dimen/px_100"
-               android:src="@color/color_main"
-               android:id="@+id/comment_photoW"
-               android:layout_height="@dimen/px_100"/>
-
+        <ImageView android:layout_width="@dimen/px_80"
+                   android:src="@color/color_main"
+                   android:id="@+id/comment_photo"
+                   android:layout_height="@dimen/px_80"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_marginLeft="@dimen/px_20"
+                      android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content"
+                          android:text="姓名"
+                          android:id="@+id/comment_name"
+                          android:textSize="@dimen/px_26"
+                          android:textColor="@color/text_333"
+                          android:layout_height="wrap_content"/>
+                <TextView android:layout_width="wrap_content"
+                          android:text="发布时间"
+                          android:layout_marginLeft="@dimen/px_20"
+                          android:id="@+id/comment_time"
+                          android:textSize="@dimen/px_22"
+                          android:textColor="@color/text_999"
+                          android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content"
+                      android:text="回复@xxxxxxxxxxxx"
+                      android:id="@+id/repeat_name"
+                      android:layout_marginTop="@dimen/px_10"
+                      android:layout_marginBottom="@dimen/px_10"
+                      android:textSize="@dimen/px_26"
+                      android:textColor="@color/color_main"
+                      android:layout_height="wrap_content"/>
+            <com.moudle.basetool.ui.ExpandableTextView android:layout_width="wrap_content"
+                                                       android:text="评论内容"
+                                                       app:foldLine="1"
+                                                       app:tailTextColor="@color/color_main"
+                                                       android:id="@+id/comment_value"
+                                                       android:textSize="@dimen/px_24"
+                                                       android:textColor="@color/text_666"
+                                                       android:layout_height="wrap_content"/>
+        </LinearLayout>
     </LinearLayout>
 
 </com.moudle.basetool.ui.AutoCardView>
