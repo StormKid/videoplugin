@@ -423,6 +423,18 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         }
     }
 
+    /**
+     * 切换停止
+     */
+    public void reStopPlayback(String url) throws IOException {
+        if (mMediaPlayer!=null){
+            mMediaPlayer.reset();
+            setRender(2);
+            mMediaPlayer.setDataSource(url);
+            mMediaPlayer.prepareAsync();
+        }
+    }
+
     @TargetApi(Build.VERSION_CODES.M)
     private void openVideo() {
         if (mUri == null || mSurfaceHolder == null) {

@@ -11,7 +11,6 @@ import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.Settings;
 import android.support.annotation.IntDef;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MotionEventCompat;
@@ -27,6 +26,7 @@ import android.widget.*;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
+import java.io.IOException;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -262,15 +262,15 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         mAudioManager = (AudioManager) mAttachActivity.getSystemService(Context.AUDIO_SERVICE);
         mMaxVolume = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         // 亮度
-        try {
-            int e = Settings.System.getInt(mAttachActivity.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS);
-            float progress = 1.0F * (float) e / 255.0F;
-            WindowManager.LayoutParams layout = mAttachActivity.getWindow().getAttributes();
-            layout.screenBrightness = progress;
-            mAttachActivity.getWindow().setAttributes(layout);
-        } catch (Settings.SettingNotFoundException var7) {
-            var7.printStackTrace();
-        }
+//        try {
+//            int e = Settings.System.getInt(mAttachActivity.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS);
+//            float progress = 1.0F * (float) e / 255.0F;
+//            WindowManager.LayoutParams layout = mAttachActivity.getWindow().getAttributes();
+//            layout.screenBrightness = progress;
+//            mAttachActivity.getWindow().setAttributes(layout);
+//        } catch (Settings.SettingNotFoundException var7) {
+//            var7.printStackTrace();
+//        }
         // 进度
         mPlayerSeek.setMax(MAX_VIDEO_SEEK);
         mPlayerSeek.setOnSeekBarChangeListener(mSeekListener);
@@ -463,6 +463,7 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
      * @return
      */
     public void start() {
+        mIvPlayCircle.setVisibility(GONE);
         if (mIsPlayComplete) {
             mIsPlayComplete = false;
         }
@@ -474,10 +475,9 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         }
         if (mIsNeverPlay) {
             mIsNeverPlay = false;
-            mIvPlayCircle.setVisibility(GONE);
             mLoadingView.setVisibility(VISIBLE);
             mIsShowBar = false;
-            if (onStartListener!=null) onStartListener.toStart();
+            if (onStartListener != null) onStartListener.toStart();
         }
 
         // 视频播放时开启屏幕常亮
@@ -501,7 +501,7 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         mIvPlay.setSelected(false);
         if (mVideoView.isPlaying()) {
             mVideoView.pause();
-            mLoadingView.setVisibility(GONE);
+            mIvPlayCircle.setVisibility(VISIBLE);
         }
         // 视频暂停时关闭屏幕常亮
         mAttachActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -524,8 +524,16 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         mVideoView.stopPlayback();
     }
 
-    public void reset() {
-
+    /**
+     * 重新播放
+     */
+    public void swichUrl(String url) {
+        try {
+            mVideoView.reStopPlayback(url);
+        } catch (IOException e) {
+            stop();
+            mAttachActivity.finish();
+        }
     }
 
     /**============================ 控制栏处理 ============================*/
@@ -681,7 +689,7 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
             pause();
         } else {
             if (!isCheckWIFI)
-            start();
+                start();
             else {
                 if (ManagerUtils.isWifiEnabled(context)) start();
                 else {
@@ -1472,7 +1480,6 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
     }
 
 
-
     /**
      * ============================ 播放清晰度 ============================
      */
@@ -1795,11 +1802,11 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
     }
 
 
-    public  interface  OnGetStartListener{
-        void  toStart();
+    public interface OnGetStartListener {
+        void toStart();
     }
 
-    public void setOnStartListener(OnGetStartListener onStartListener){
+    public void setOnStartListener(OnGetStartListener onStartListener) {
         this.onStartListener = onStartListener;
     }
 }

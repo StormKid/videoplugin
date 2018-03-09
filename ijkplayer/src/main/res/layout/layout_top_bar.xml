@@ -76,7 +76,6 @@
         <ImageView
             android:id="@+id/iv_back_window"
             android:layout_width="25dp"
-            android:scaleType="center"
             android:layout_height="25dp"
             android:background="@drawable/sel_item_background"
             android:src="@mipmap/white_back"/>

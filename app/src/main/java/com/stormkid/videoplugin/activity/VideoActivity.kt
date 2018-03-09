@@ -54,6 +54,10 @@ class VideoActivity : BaseActivity() {
         play_view.mPlayerThumb.scaleType = ImageView.ScaleType.CENTER_CROP
     }
 
+    private fun updateVideo(url: String, title: String){
+        play_view.setTitle(title).swichUrl(url)
+    }
+
 
     private fun initVideo() {
         if (myVideoUrls.isEmpty()) {
@@ -71,8 +75,7 @@ class VideoActivity : BaseActivity() {
 
         }
         tag_P.initChild(list, {
-            initPlayView(it.subject, it.name)
-            play_view.start()
+            updateVideo(it.subject, it.name)
         })
         initComment()
 
