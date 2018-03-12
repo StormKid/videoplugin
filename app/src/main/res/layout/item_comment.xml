@@ -44,7 +44,7 @@
                       android:layout_height="wrap_content"/>
             <com.moudle.basetool.ui.ExpandableTextView android:layout_width="wrap_content"
                                                        android:text="评论内容"
-                                                       app:foldLine="1"
+                                                       app:foldLine="5"
                                                        app:tailTextColor="@color/color_main"
                                                        android:id="@+id/comment_value"
                                                        android:textSize="@dimen/px_24"

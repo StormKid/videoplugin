@@ -528,11 +528,16 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
      * 重新播放
      */
     public void swichUrl(String url) {
-        try {
-            mVideoView.reStopPlayback(url);
-        } catch (IOException e) {
-            stop();
-            mAttachActivity.finish();
+        if (isPlaying()) {
+            try {
+                mVideoView.reStopPlayback(url);
+            } catch (IOException e) {
+                stop();
+                mAttachActivity.finish();
+            }
+        }else {
+            setVideoPath(url);
+            start();
         }
     }
 
