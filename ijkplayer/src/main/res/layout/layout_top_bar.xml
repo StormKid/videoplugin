@@ -14,18 +14,18 @@
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80px"
+            android:layout_height="80px"
             android:background="@drawable/sel_item_background"
-            android:padding="10dp"
+            android:padding="10px"
             android:src="@mipmap/ic_return_back"/>
 
         <com.moudle.ijkplayer.MarqueeTextView
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="30px"
             android:layout_weight="1"
             android:ellipsize="marquee"
             android:focusable="true"
@@ -34,21 +34,21 @@
             android:singleLine="true"
             android:text="标题"
             android:textColor="@android:color/white"
-            android:textSize="16sp"/>
+            android:textSize="28px"/>
 
         <ProgressBar
             android:id="@+id/pb_battery"
             style="@style/ProgressBarBattery"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="20px"
             android:max="100"/>
 
         <TextView
             android:id="@+id/tv_system_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="20px"
             android:textColor="@android:color/white"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/title_text"/>
 
 
         <TextView
@@ -62,7 +62,7 @@
             android:layout_marginRight="10dp"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/title_text"/>
     </LinearLayout>
 
     <LinearLayout
@@ -70,21 +70,22 @@
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20px"
         android:visibility="gone">
 
         <ImageView
             android:id="@+id/iv_back_window"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:padding="10px"
             android:background="@drawable/sel_item_background"
             android:src="@mipmap/white_back"/>
         <com.moudle.ijkplayer.MarqueeTextView
                 android:id="@+id/tv_title_vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="30px"
                 android:layout_weight="1"
                 android:ellipsize="marquee"
                 android:focusable="true"
@@ -93,7 +94,7 @@
                 android:singleLine="true"
                 android:text="标题"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/title_text"/>
 
     </LinearLayout>
 
@@ -102,7 +103,7 @@
         android:layout_width="@dimen/settings_btn_width"
         android:layout_height="0dp"
         android:layout_gravity="right"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="20px"
         android:gravity="center_horizontal"
         android:layout_marginTop="@dimen/control_bar_height"
         android:background="@color/bg_video_view"

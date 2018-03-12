@@ -11,8 +11,8 @@
         android:layout_margin="3dp"
         android:background="@drawable/sel_media_quality_border"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="10px"
         android:text="清晰"
         android:textColor="@drawable/sel_media_quality_text"
-        android:textSize="14sp"/>
+        android:textSize="@dimen/title_text"/>
 </FrameLayout>

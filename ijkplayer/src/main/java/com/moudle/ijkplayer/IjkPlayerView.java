@@ -196,6 +196,7 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
             throw new IllegalArgumentException("Context must be AppCompatActivity");
         }
         View.inflate(context, R.layout.layout_player_view, this);
+        DimenUtil.getInstance.build(context).autoSize(this);
         mVideoView = (IjkVideoView) findViewById(R.id.video_view);
         mPlayerThumb = (ImageView) findViewById(R.id.iv_thumb);
         mLoadingView = (ProgressBar) findViewById(R.id.pb_loading);
@@ -530,14 +531,13 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
      * 重新播放
      */
     public void swichUrl(String url) {
-        if (isPlaying()) {
-            try {
-                mVideoView.reStopPlayback(url);
-            } catch (IOException e) {
-                stop();
-                mAttachActivity.finish();
-            }
-        } else {
+        try {
+            mVideoView.reStopPlayback(url);
+        } catch (IOException e) {
+            stop();
+            mAttachActivity.finish();
+        }
+        if (!isPlaying()) {
             setVideoPath(url);
             start();
         }

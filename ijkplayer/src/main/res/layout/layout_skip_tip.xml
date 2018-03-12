@@ -15,9 +15,9 @@
 
         <ImageView
             android:id="@+id/iv_cancel_skip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:padding="10px"
             android:background="@drawable/sel_item_background"
             android:src="@mipmap/ic_cancel_skip"/>
 
@@ -29,18 +29,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10px"
             android:text="@string/video_record"
             android:textColor="@android:color/white"
-            android:textSize="16sp"/>
+            android:textSize="32px"/>
 
         <TextView
             android:id="@+id/tv_skip_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:padding="10px"
             android:textColor="@android:color/white"
-            android:textSize="16sp"/>
+            android:textSize="32px"/>
 
         <TextView
             android:layout_width="1px"
@@ -51,10 +51,10 @@
             android:id="@+id/tv_do_skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:padding="10px"
             android:text="@string/video_skip"
             android:background="@drawable/sel_item_background"
             android:textColor="@color/video_skip"
-            android:textSize="16sp"/>
+            android:textSize="32px"/>
     </LinearLayout>
 </merge>

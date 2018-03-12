@@ -2,8 +2,8 @@
 <resources>
     <!-- 自定义电量进度条 -->
     <style name="ProgressBarBattery" parent="@android:style/Widget.ProgressBar.Horizontal">
-        <item name="android:layout_width">36dp</item>
-        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_width">70px</item>
+        <item name="android:layout_height">30px</item>
         <item name="android:background">@mipmap/ic_battery</item>
         <item name="android:paddingTop">2dp</item>
         <item name="android:paddingBottom">2dp</item>

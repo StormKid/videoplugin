@@ -6,9 +6,9 @@
     <FrameLayout
         android:visibility="gone"
         android:id="@+id/fl_media_quality"
-        android:layout_width="150dp"
+        android:layout_width="260px"
         android:layout_gravity="right"
-        android:translationX="150dp"
+        android:translationX="260px"
         android:background="@color/bg_video_view"
         android:layout_height="match_parent">
 

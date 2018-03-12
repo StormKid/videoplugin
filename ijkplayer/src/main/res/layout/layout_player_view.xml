@@ -22,8 +22,8 @@
 
     <ProgressBar
         android:id="@+id/pb_loading"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="80px"
+        android:layout_height="80px"
         android:layout_gravity="center"
         android:gravity="center"
 />
@@ -41,12 +41,12 @@
 
     <ImageView
         android:id="@+id/iv_player_lock"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:padding="10dp"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:padding="20px"
         android:background="@drawable/shape_player_lock_bg"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20px"
         android:src="@drawable/sel_player_lock"
         android:visibility="gone"/>
 
@@ -56,8 +56,8 @@
         android:id="@+id/iv_play_circle"
         android:src="@mipmap/ic_play_circle"
         android:layout_gravity="center"
-        android:layout_width="56dp"
-        android:layout_height="56dp"/>
+        android:layout_width="100px"
+        android:layout_height="100px"/>
 
     <include layout="@layout/layout_media_quality"/>
 
