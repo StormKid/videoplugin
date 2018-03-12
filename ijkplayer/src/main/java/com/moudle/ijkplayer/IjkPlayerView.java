@@ -1,5 +1,6 @@
 package com.moudle.ijkplayer;
 
+import android.annotation.SuppressLint;
 import android.content.*;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -105,6 +106,7 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
     // 关联的Activity
     private AppCompatActivity mAttachActivity;
 
+    @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -535,7 +537,7 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
                 stop();
                 mAttachActivity.finish();
             }
-        }else {
+        } else {
             setVideoPath(url);
             start();
         }
@@ -1196,10 +1198,13 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         if (duration > 0) {
             // 转换为 Seek 显示的进度值
             long pos = (long) MAX_VIDEO_SEEK * position / duration;
-            mPlayerSeek.setProgress((int) pos);
+            int result = pos > 935 ? MAX_VIDEO_SEEK : (int) pos;
+            position = pos > 935 ? duration : position;
+            mPlayerSeek.setProgress(result);
         }
         // 获取缓冲的进度百分比，并显示在 Seek 的次进度
         int percent = mVideoView.getBufferPercentage();
+        percent = percent > 93.5 ? 100 : percent;
         mPlayerSeek.setSecondaryProgress(percent * 10);
         // 更新播放时间
         mTvEndTime.setText(generateTime(duration));
