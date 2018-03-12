@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.view.Gravity
 import com.google.gson.Gson
 import com.moudle.basetool.BaseActivity
 import com.moudle.basetool.net.MyNormalNetCallback
@@ -67,6 +68,10 @@ class MainActivity : BaseActivity() {
                 EventBus.getDefault().post(value,"search")
             }
         })
+
+        main_top.setLeftImgClickListener {
+            draw_layout.openDrawer(Gravity.START)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

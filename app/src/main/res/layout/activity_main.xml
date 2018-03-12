@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v4.widget.DrawerLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/draw_layout"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -65,3 +70,12 @@
    />
 
 </LinearLayout>
+    <android.support.design.widget.NavigationView  android:id="@+id/nav_view"
+                                                   android:layout_width="wrap_content"
+                                                   android:layout_height="match_parent"
+                                                   android:layout_gravity="start"
+                                                   app:headerLayout="@layout/slide_title"
+                                                   android:fitsSystemWindows="true"
+
+    />
+</android.support.v4.widget.DrawerLayout>
