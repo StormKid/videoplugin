@@ -1198,9 +1198,7 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         if (duration > 0) {
             // 转换为 Seek 显示的进度值
             long pos = (long) MAX_VIDEO_SEEK * position / duration;
-            int result = pos > 935 ? MAX_VIDEO_SEEK : (int) pos;
-            position = pos > 935 ? duration : position;
-            mPlayerSeek.setProgress(result);
+            mPlayerSeek.setProgress((int)pos);
         }
         // 获取缓冲的进度百分比，并显示在 Seek 的次进度
         int percent = mVideoView.getBufferPercentage();
@@ -1210,6 +1208,7 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         mTvEndTime.setText(generateTime(duration));
         mTvCurTime.setText(generateTime(position));
         // 返回当前播放进度
+
         return position;
     }
 
