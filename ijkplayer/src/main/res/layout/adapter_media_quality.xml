@@ -14,5 +14,5 @@
         android:padding="10px"
         android:text="清晰"
         android:textColor="@drawable/sel_media_quality_text"
-        android:textSize="@dimen/title_text"/>
+        android:textSize="@dimen/normal_text"/>
 </FrameLayout>

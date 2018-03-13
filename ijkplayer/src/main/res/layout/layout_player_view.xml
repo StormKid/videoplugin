@@ -56,8 +56,8 @@
         android:id="@+id/iv_play_circle"
         android:src="@mipmap/ic_play_circle"
         android:layout_gravity="center"
-        android:layout_width="100px"
-        android:layout_height="100px"/>
+        android:layout_width="80px"
+        android:layout_height="80px"/>
 
     <include layout="@layout/layout_media_quality"/>
 

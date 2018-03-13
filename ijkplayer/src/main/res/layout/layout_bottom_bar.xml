@@ -44,12 +44,12 @@
 
         <ImageView
             android:id="@+id/iv_play"
-            android:layout_width="50px"
-            android:layout_height="50px"
+            android:layout_width="40px"
+            android:layout_height="40px"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
+            android:padding="5px"
             android:background="@drawable/sel_item_background"
-            android:padding="10px"
             android:src="@drawable/sel_btn_play"/>
 
         <TextView
@@ -130,13 +130,12 @@
 
         <ImageView
             android:id="@+id/iv_fullscreen"
-            android:layout_width="80px"
-            android:layout_height="80px"
+            android:layout_width="40px"
+            android:layout_height="40px"
             android:layout_gravity="center"
             android:layout_marginRight="5dp"
             android:scaleType="centerCrop"
             android:background="@drawable/sel_item_background"
-            android:padding="10px"
             android:src="@drawable/sel_btn_fullscreen"/>
     </LinearLayout>
 </merge>
