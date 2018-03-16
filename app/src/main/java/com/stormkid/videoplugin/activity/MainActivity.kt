@@ -3,14 +3,17 @@ package com.stormkid.videoplugin.activity
 import android.app.Activity
 import android.content.Intent
 import android.support.v4.app.Fragment
+import android.support.v4.widget.DrawerLayout
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.Gravity
+import android.view.View
 import com.google.gson.Gson
 import com.moudle.basetool.BaseActivity
 import com.moudle.basetool.net.MyNormalNetCallback
 import com.moudle.basetool.net.OkTools
+import com.moudle.basetool.utils.ImageUtil
 import com.moudle.basetool.utils.JsonUtil
 import com.moudle.basetool.utils.ManagerUtils
 import com.moudle.basetool.utils.PermissionUtil
@@ -23,6 +26,7 @@ import com.stormkid.videoplugin.fragment.CategaryListFragment
 import com.stormkid.videoplugin.utils.NetConnectConstants
 import com.yanzhenjie.permission.Permission
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.slide_title.*
 import org.simple.eventbus.EventBus
 
 class MainActivity : BaseActivity() {
@@ -49,6 +53,7 @@ class MainActivity : BaseActivity() {
         })
 
 
+
     }
 
     override fun initEvent() {
@@ -72,6 +77,23 @@ class MainActivity : BaseActivity() {
         main_top.setLeftImgClickListener {
             draw_layout.openDrawer(Gravity.START)
         }
+
+        draw_layout.addDrawerListener(object : DrawerLayout.DrawerListener {
+            override fun onDrawerStateChanged(newState: Int) {
+            }
+
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+            }
+
+            override fun onDrawerClosed(drawerView: View) {
+            }
+
+            override fun onDrawerOpened(drawerView: View) {
+                initNavView()
+            }
+
+        } )
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -98,4 +120,10 @@ class MainActivity : BaseActivity() {
         }
     }
 
+
+    private fun initNavView() {
+
+        ImageUtil(this).setUrl(R.mipmap.cl01).withView(people_img).setErr(R.mipmap.cl01).getCircleImage()
+//        people_img.setOnClickListener { ManagerUtils.startActivity(this,LoginActivity::class.java) }
+    }
 }

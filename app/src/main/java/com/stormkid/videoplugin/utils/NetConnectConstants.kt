@@ -11,4 +11,6 @@ object NetConnectConstants {
     const val video_list = "video/list"
 
     const val comment_list = "comment/list"
+
+    const val login = "login"
 }

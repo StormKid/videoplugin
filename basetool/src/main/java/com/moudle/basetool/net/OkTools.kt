@@ -14,9 +14,9 @@ import com.moudle.basetool.net.OkTools.inner.fileList
 import com.moudle.basetool.net.OkTools.inner.filesKey
 import com.moudle.basetool.net.OkTools.inner.params
 import com.moudle.basetool.net.OkTools.inner.refresh
-import com.moudle.basetool.net.OkTools.inner.requestBody
 import com.moudle.basetool.net.OkTools.inner.url
 import com.moudle.basetool.utils.JsonUtil
+import com.moudle.basetool.utils.LogUtil
 import com.moudle.basetool.utils.LogUtil.Companion.tag
 import java.io.File
 
@@ -24,7 +24,6 @@ import java.io.File
  * Created by like on 2017/12/17.
  */
 class OkTools private constructor() {
-
 
 
     companion object {
@@ -50,16 +49,16 @@ class OkTools private constructor() {
         lateinit var filesKey: String
         lateinit var file: File
         lateinit var fileList: List<File>
-        lateinit var requestBody:String
+        lateinit var requestBody: String
         lateinit var myContext: Context
-        lateinit var BASE_URL :String
-        lateinit var refresh:SwipeRefreshLayout
+        lateinit var BASE_URL: String
+        lateinit var refresh: SwipeRefreshLayout
     }
 
 
     class Builder {
         //初始化
-       init {
+        init {
             inner.tag = ""
             inner.params = HashMap()
             inner.fileKey = "file"
@@ -71,7 +70,7 @@ class OkTools private constructor() {
             inner.url = ""
         }
 
-        fun setBase(baseUrl:String): Builder {
+        fun setBase(baseUrl: String): Builder {
             inner.BASE_URL = baseUrl
             return this
         }
@@ -114,7 +113,7 @@ class OkTools private constructor() {
             return this
         }
 
-        fun putRequestBody(body:Any):Builder{
+        fun putRequestBody(body: Any): Builder {
             inner.requestBody = JsonUtil.to(body)
             return this
         }
@@ -128,23 +127,28 @@ class OkTools private constructor() {
     }
 
 
-    fun setRefresh(refreshLayout: SwipeRefreshLayout?):OkTools{
-        if (refreshLayout!=null)
-        refresh = refreshLayout
+    fun setRefresh(refreshLayout: SwipeRefreshLayout?): OkTools {
+        if (refreshLayout != null)
+            refresh = refreshLayout
         return this
     }
 
 
     fun get(callback: MyNormalNetCallback) {
-        OkGo.get<String>(BASE_URL+url).tag(tag).params(params).execute(MyIntentCallback(inner.myContext, tag, callback, refresh))
+        OkGo.get<String>(BASE_URL + url).tag(tag).params(params).execute(MyIntentCallback(inner.myContext, tag, callback, refresh))
     }
 
     fun post(callback: MyNormalNetCallback) {
-        OkGo.post<String>(BASE_URL+url).tag(tag).upJson(requestBody).params(params).execute(MyIntentCallback(inner.myContext, tag, callback, refresh))
+        OkGo.post<String>(BASE_URL + url).tag(tag).run {
+            if (inner.params.isEmpty()) upJson(inner.requestBody)
+            else params(inner.params)
+                    .execute(MyIntentCallback(inner.myContext, LogUtil.tag, callback, refresh))
+        }
     }
 
-    fun downloadFile(fileCallBack:MyFileNetCallback) {
-        OkGo.post<File>(BASE_URL+url).tag(tag).execute(object : FileCallback() {
+
+    fun downloadFile(fileCallBack: MyFileNetCallback) {
+        OkGo.post<File>(BASE_URL + url).tag(tag).execute(object : FileCallback() {
             override fun onSuccess(response: Response<File>?) {
                 if (response!!.code() == 200) {
                     if (response.body() != null) {
@@ -176,7 +180,7 @@ class OkTools private constructor() {
      */
     fun uploadFiles(callback: MyNormalNetCallback) {
         if (fileList.isEmpty()) return
-        OkGo.post<String>(BASE_URL+url).addFileParams(filesKey, fileList).params(params).execute(MyIntentCallback(inner.myContext, tag, callback, refresh))
+        OkGo.post<String>(BASE_URL + url).addFileParams(filesKey, fileList).params(params).execute(MyIntentCallback(inner.myContext, tag, callback, refresh))
     }
 
 
@@ -185,7 +189,7 @@ class OkTools private constructor() {
      */
     fun uploadFile(callback: MyNormalNetCallback) {
         if (file.exists())
-            OkGo.post<String>(BASE_URL+url).params(fileKey, file).execute(MyIntentCallback(inner.myContext, tag, callback, refresh))
+            OkGo.post<String>(BASE_URL + url).params(fileKey, file).execute(MyIntentCallback(inner.myContext, tag, callback, refresh))
     }
 
 }
