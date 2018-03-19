@@ -5,7 +5,7 @@
     <stroke android:color="@android:color/transparent"
         android:width="0px"
         />
-    <solid android:color="@color/color_select_trans" />
+    <solid android:color="@color/color_selected_trans" />
 
     <corners
         android:radius="@dimen/px_10"

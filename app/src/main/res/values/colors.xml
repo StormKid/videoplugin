@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#FF920B</color>
     <color name="colorAccent">#FF920B</color>
 
-    <color name="color_select">#CC3E42</color>
-    <color name="color_select_trans">#55CC3E42</color>
+    <color name="color_selected">#CC3E42</color>
+    <color name="color_selected_trans">#55CC3E42</color>
 </resources>
